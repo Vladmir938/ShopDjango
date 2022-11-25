@@ -40,14 +40,14 @@
                 {% if prod.discount != 0 %}
                   <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <span class="tag">Sale</span>
-                    <a href="/shop-single/?product={{ prod.id }}"> <img src="../{{ prod.image }}" alt="Image"></a>
-                    <h3 class="text-dark"><a href="{% url 'shop-single' %}">{{ prod.name }}</a></h3>
+                    <a href="/shop-single/{{ prod.id }}/"> <img src="../{{ prod.image }}" alt="Image"></a>
+                    <h3 class="text-dark"><a href="/shop-single/{{ prod.id }}">{{ prod.name }}</a></h3>
                     <p class="price"><del>${{ prod.price }}</del> &mdash; ${{ prod.get_sale }}</p>
                   </div>
                     {% else %}
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="/shop-single/?product={{ prod.id }}"> <img src="../{{ prod.image }}" alt="Image"></a>
-                    <h3 class="text-dark"><a href="{% url 'shop-single' %}">{{ prod.name }}</a></h3>
+                    <a href="/shop-single/{{ prod.id }}"/> <img src="../{{ prod.image }}" alt="Image"></a>
+                    <h3 class="text-dark"><a href="/shop-single/{{ prod.id }}/">{{ prod.name }}</a></h3>
                     <p class="price">${{ prod.price}}</p>
                   </div>
                 {% endif %}

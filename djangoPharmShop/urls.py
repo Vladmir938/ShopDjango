@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoPharmShop.views import index, AboutView, CartView, ContactView, ShopView, ShopSingleView, ThankyouView, \
-    CheckoutView
+    CheckoutView, ProductView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,9 +25,8 @@ urlpatterns = [
     path('cart/', CartView.as_view(), name='cart'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('shop/', ShopView.as_view(), name='shop'),
-    path('shop-single/', ShopSingleView.as_view(), name='shop-single'),
+    path('shop-single/<int:pk>/', ShopSingleView.as_view(), name='shop-single'),
     path('thankyou/', ThankyouView.as_view(), name='thankyou'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
-
 ]
 

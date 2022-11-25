@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DetailView
 from products.models import Products
 
 def index(request):
@@ -27,14 +27,16 @@ class ShopView(TemplateView):
         context['products'] = Products.objects.all()
         return context
 
-class ShopSingleView(TemplateView):
+class ShopSingleView(DetailView):
     template_name = 'shop-single.html'
+    model = Products
 
 
 class ThankyouView(TemplateView):
     template_name = 'thankyou.html'
 
-class ProductView(ShopSingleView, TemplateView):
+class ProductView(DetailView):
+    model = Products
     template_name = 'shop-single.html'
 
     def get_context_data(self, **kwargs):

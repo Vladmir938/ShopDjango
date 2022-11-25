@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0"><a href="{% url 'index' %}">Home</a> <span class="mx-2 mb-0">/</span> <a
-              href="{% url 'shop' %}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Ibuprofen Tablets, 200mg</strong></div>
+              href="{% url 'shop' %}">Store</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ object.name }}</strong></div>
         </div>
       </div>
     </div>
@@ -16,13 +16,17 @@
         <div class="row">
           <div class="col-md-5 mr-auto">
             <div class="border text-center">
-              <img src="../{{ product.image }}" alt="Image" class="img-fluid p-5">
+              <img src="/{{ object.image }}" alt="Image" class="img-fluid p-5">
             </div>
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">{{ prod.name }}</h2>
-            <p>{{ prod.description }}</p>
-            <p><del>$95.00</del>  <strong class="text-primary h4">$55.00</strong></p>
+            <h2 class="text-black">{{ object.name }}</h2>
+            <p>{{ object.description }}</p>
+             {% if object.discount != 0 %}
+            <p><del>${{ object.price }}</del>  <strong class="text-primary h4">${{ object.get_sale}}</strong></p>
+              {% else %}
+              <p><strong class="text-primary h4">${{ object.price }}</strong></p>
+              {% endif %}
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 220px;">
                 <div class="input-group-prepend">
